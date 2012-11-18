@@ -1,5 +1,6 @@
 #' Grab tweets for a particular user
 #'
+#' Here is where some blurb goes.
 #'
 #' @param user the name of a Twitter user
 #' @param consumer.key your Twitter "consumer" key, see Details.
@@ -14,7 +15,7 @@
 #' https://dev.twitter.com/apps/new
 #'
 #' @author David L. Miller
-#'
+#' @export
 get_tweets <- function(user, consumer.key, consumer.secret, access.token,
                        access.token.secret, n.tweets=300){
 
@@ -44,7 +45,7 @@ get_tweets <- function(user, consumer.key, consumer.secret, access.token,
 
   # grab the timeline for the user and strip out the useless stuff
   timeline <- userTimeline(user, n=n.tweets)
-  timeline <- unlist(lapply(timeline,function(x){x$text}))[2]
+  timeline <- unlist(lapply(timeline,function(x){x$text}))
 
   return(timeline)
 }
