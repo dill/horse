@@ -14,3 +14,4 @@ Collate:
     'get_tweets.R'
     'make_horse.R'
     'neigh.R'
+    'twitter_setup.R'

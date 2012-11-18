@@ -1,3 +1,4 @@
 export(get_tweets)
 export(make_horse)
 export(neigh)
+export(twitter_setup)
