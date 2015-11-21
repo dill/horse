@@ -15,11 +15,12 @@
 #'
 #' @author David L. Miller
 #' @export
+#' @importFrom twitteR userTimeline
 get_tweets <- function(user, n.tweets=300){
 
   # grab the timeline for the user and strip out the useless stuff
-  timeline <- userTimeline(user, n=n.tweets)
-  timeline <- unlist(lapply(timeline,function(x){x$text}))
+  timeline <- userTimeline(user, n=n.tweets, excludeReplies=TRUE)
+  timeline <- unlist(lapply(timeline, function(x){x$text}))
 
   return(timeline)
 }

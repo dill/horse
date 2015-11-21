@@ -13,7 +13,7 @@
 #'
 #' @author David L. Miller
 #' @export
-#' @import twitteR setup_twitter_oauth
+#' @importFrom twitteR setup_twitter_oauth
 twitter_setup <- function(consumer.key, consumer.secret, access.token,
                        access.token.secret){
 
