@@ -7,8 +7,7 @@
 #'
 #' @return character vector of tweets.
 #'
-#' @section Details
-#'
+#' @section Details:
 #' First need to use \code{\link{twitter_setup}} to get the correct credentials
 #' to use the Twitter API. This only needs to be done once for then all called 
 #' to \code{\link{get_tweets}} can be used in one session.

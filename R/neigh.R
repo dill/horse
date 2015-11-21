@@ -17,10 +17,11 @@ neigh <- function(horse.obj,length=140){
 
   tm <- horse.obj$transition.matrix
   lookup <- horse.obj$lookup
+  strings <- horse.obj$strings
 
 
   # id of TKTKTKSTART
-  start.id <- unique(my.horse$strings$i[my.horse$strings$str=="TKTKTKSTART"])
+  start.id <- unique(strings$i[strings$str=="TKTKTKSTART"])
 
   # find a starting point
   first <- which(rmultinom(1,1,tm[start.id,])==1, arr.ind=TRUE)[1]
