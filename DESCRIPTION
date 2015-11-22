@@ -1,14 +1,13 @@
 Package: horse
-Description: Generate tweets from Markov chains
+Description: Generate tweets from Markov chains.
 Title: horse
-Version: 0.0.1
+Version: 0.0.2
 License: GPL-2
 Author: David L. Miller <dave@ninepointeightone.net>
 Maintainer: David L. Miller <dave@ninepointeightone.net>
 Depends:
     R (>= 2.10.0),
     twitteR,
-    ROAuth,
     Matrix
 Collate:
     'get_tweets.R'

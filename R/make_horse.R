@@ -9,6 +9,7 @@
 #' @return a horse object ready to generate tweets from.
 #'
 #' @author David L. Miller
+#' @importFrom Matrix spMatrix
 #' @export
 make_horse <- function(tweets){
 

@@ -12,6 +12,7 @@
 #' @return a string of length \code{length}.
 #'
 #' @author David L. Miller
+#' @importFrom stats rmultinom
 #' @export
 neigh <- function(horse.obj,length=140){
 

@@ -4,12 +4,14 @@
 \alias{get_tweets}
 \title{Grab tweets for a particular user}
 \usage{
-get_tweets(user, n.tweets = 300)
+get_tweets(user, n.tweets = 300, sleep_time = 10)
 }
 \arguments{
 \item{user}{the name of a Twitter user}
 
 \item{n.tweets}{number of tweets to pull from the user}
+
+\item{sleep_time}{seconds to sleep inbetween requests}
 }
 \value{
 character vector of tweets.

@@ -4,6 +4,7 @@
 #'
 #' @param user the name of a Twitter user
 #' @param n.tweets number of tweets to pull from the user
+#' @param sleep_time seconds to sleep inbetween requests
 #'
 #' @return character vector of tweets.
 #'
@@ -16,11 +17,24 @@
 #' @author David L. Miller
 #' @export
 #' @importFrom twitteR userTimeline
-get_tweets <- function(user, n.tweets=300){
+get_tweets <- function(user, n.tweets=300, sleep_time=10){
 
-  # grab the timeline for the user and strip out the useless stuff
-  timeline <- userTimeline(user, n=n.tweets, excludeReplies=TRUE)
-  timeline <- unlist(lapply(timeline, function(x){x$text}))
+  last_ID <- NULL
+  tweets <- c()
+  n <- n.tweets
 
-  return(timeline)
+  while(length(tweets) < n.tweets){
+    # grab the timeline for the user and strip out the useless stuff
+    timeline <- userTimeline(user, n=n, excludeReplies=TRUE)
+
+    # get the last ID:
+    if(length(timeline)==0) break()
+    last_ID <- timeline[[length(timeline)]]$id
+    tweets <- c(tweets, unlist(lapply(timeline, function(x){x$text})))
+    n <- n.tweets-length(tweets)
+    Sys.sleep(sleep_time)
+  }
+
+
+  return(tweets)
 }
