@@ -9,32 +9,33 @@
 #' @return character vector of tweets.
 #'
 #' @section Details:
-#' First need to use \code{\link{twitter_setup}} to get the correct credentials
-#' to use the Twitter API. This only needs to be done once for then all called 
-#' to \code{\link{get_tweets}} can be used in one session.
+#' First need to use \code{\link{twitter_setup}} to get the correct credentials to use the Twitter API. This only needs to be done once for then all called to \code{\link{get_tweets}} can be used in one session.
 #'
+#' Retweets are not included in the returned tweets.
 #'
 #' @author David L. Miller
 #' @export
 #' @importFrom twitteR userTimeline
-get_tweets <- function(user, n.tweets=300, sleep_time=10){
+get_tweets <- function(user, n.tweets=300, sleep_time=3){
 
   last_ID <- NULL
   tweets <- c()
-  n <- n.tweets
+  n <- min(n.tweets, 3000)
+
+  last_ID <- NULL
 
   while(length(tweets) < n.tweets){
     # grab the timeline for the user and strip out the useless stuff
-    timeline <- userTimeline(user, n=n, excludeReplies=TRUE)
+    timeline <- userTimeline(user, n=2*n, sinceID=last_ID)
 
     # get the last ID:
     if(length(timeline)==0) break()
     last_ID <- timeline[[length(timeline)]]$id
-    tweets <- c(tweets, unlist(lapply(timeline, function(x){x$text})))
+    tweets <- unique(c(tweets, unlist(lapply(timeline, function(x){x$text}))))
     n <- n.tweets-length(tweets)
     Sys.sleep(sleep_time)
   }
 
 
-  return(tweets)
+  return(tweets[1:min(n.tweets, length(tweets))])
 }

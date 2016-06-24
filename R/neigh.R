@@ -53,5 +53,8 @@ neigh <- function(horse.obj,length=140){
     this.str <- neigh(horse.obj,length)
   }
 
+  # remove starting whitespace
+  this.str <- sub("^ ", "", this.str)
+
   return(this.str)
 }
